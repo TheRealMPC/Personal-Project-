@@ -1,7 +1,7 @@
 import decode from 'jwt-decode';
-import { browserHistory } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import auth0 from 'auth0-js';
-import config from '../../config';
+import config from './../config';
 
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
@@ -30,7 +30,7 @@ export function login() {
 export function logout() {
   clearIdToken();
   clearAccessToken();
-  browserHistory.push('/restaurants');
+  BrowserRouter.push('/restaurants');
 }
 
 export function requireAuth(nextState, replace) {

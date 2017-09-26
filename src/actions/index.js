@@ -16,7 +16,7 @@ export const CREATE_STORE = 'create_store';
 export const DELETE_STORE = 'delete_store';
 
 
-const ROOT_URL = 'http://localhost:3000/api';
+const ROOT_URL = 'http://localhost:3001/api';
 
 export function fetchRestaurants() {
   const request = axios.get(`${ROOT_URL}/restaurants`);

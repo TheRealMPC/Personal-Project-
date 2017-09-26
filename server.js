@@ -4,8 +4,8 @@ const { json } = require('body-parser')
 const request = require('request');
 const cors = require('cors');
 const massive = require('massive');
-const config = require('./config');
-const PORT = process.env.PORT || 3000;
+const env = require('dotenv').config();
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 const db_activity_control = require('./db_activity_control');
@@ -17,15 +17,15 @@ const db_store_control = require('./db_store_control');
 app.use(session({
   resave: true,
   saveUninitialized: true,
-  secret: config.secret
+  secret: process.env.secret
 }));
 
 app.use(cors());
 app.use(json());
 
-// app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/build'));
 
-massive(config.massiveConnectionString).then(dbInstance => {
+massive(process.env.massiveConnectionString).then(dbInstance => {
   app.set("db", dbInstance);
 })
 

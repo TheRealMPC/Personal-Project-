@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchRestaurants } from '../actions';
 import MyNav from './navbar';
-import styles from '../../style/restaurantscss.css';
 
 class RestaurantPostsIndex extends Component {
   componentDidMount(){

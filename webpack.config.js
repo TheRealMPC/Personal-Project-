@@ -8,28 +8,29 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['react', 'es2015', 'stage-1']
-      }
-    },{
-        test: /\.(gif|jpe?g|png|ico)$/,
-        loader: 'url-loader?limit=10000'
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-2'],
+        },
+        {
+            test: /\.(gif|jpe?g|png|ico)$/,
+            loader: 'url-loader?limit=10000'
+          },
+          {
+            test: /\.(otf|eot|svg|ttf|woff|woff2).*$/,
+            loader: 'url-loader?limit=10000'
+          },
+            { test: /\.css$/, loader: "style-loader!css-loader" }
+          ]
       },
       {
-        test: /\.(otf|eot|svg|ttf|woff|woff2).*$/,
-        loader: 'url-loader?limit=10000'
+        test: /\.scss$/,
+        loader: ['style-loader', 'css-loader', 'sass-loader'],
       },
-        { test: /\.css$/, loader: "style-loader!css-loader" }
-      ]
+    ],
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './'
-  }
 };

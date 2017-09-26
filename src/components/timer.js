@@ -1,9 +1,4 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { fadeInLeft } from 'react-animations';
-import { StyleSheet, css } from 'aphrodite';
 import TimeAgo from 'react-timeago';
 
 
@@ -21,8 +16,6 @@ class Timer extends Component {
   initialState () {
     let initial =  JSON.parse(localStorage.getItem(this.props.objId)) || null;
     return initial ? initial : false;
-    console.log("init", initial);
-    console.log("initialState");
   }
 
   componentDidMount(){
